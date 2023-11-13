@@ -4,7 +4,7 @@ import glob
 
 video_dir = './AlgonautsVideos268_All_30fpsmax'
 video_files = sorted(glob.glob(video_dir + '/*.mp4'))
-vid_id = 0  # @param {type: "integer"}
+vid_id = 9  # @param {type: "integer"}
 
 if video_files:
     # Create a video capture object
