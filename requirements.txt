@@ -1,0 +1,16 @@
+opencv-python
+torch
+argparse
+numpy
+nibabel
+matplotlib
+pillow
+tqdm
+scikit-learn
+torchvision
+nilearn
+decord
+notebook
+ipywidgets
+pyarrow
+fastparquet
