@@ -16,16 +16,17 @@ model = "Baseline"
 # model = "Specialized"
 transformations = False  # set to true for task 4
 
-# load data in case it has not been downloaded locally
+# load data in case it has not been downloaded yet
 data_load()
 
 # transform fmri data in case it has not been saved in a transformed format
 fmri_preprocessing()
 
+# conduct transformations for task 4
 if transformations:
     spacial_transformations()
 
-# create feature maps from videos in case they have not been created
+# create feature maps from videos in case they have not been created yet
 if model == "Baseline":
     baseline_feature_extractor()
     motion_feature_extractor()
