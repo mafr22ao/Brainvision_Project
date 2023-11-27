@@ -11,7 +11,7 @@ def preprocess_video(input_video_path, output_video_path):
 
     # Define the codec and create VideoWriter object
     fourcc = cv.VideoWriter_fourcc(*'mp4v')  # You can change 'mp4v' to another codec if needed
-    fps = 30
+    fps = 24.0  # FPS of the output video
 
     # Read the first frame to get the aspect ratio
     ret, frame = cap.read()
@@ -61,8 +61,8 @@ def preprocess_all_videos(input_folder, output_folder):
             preprocess_video(input_video_path, output_video_path)
 
 # Folder paths
-input_video_folder = r'C:\Users\andre\OneDrive\Documents\GitHub\Brainvision_Project\AlgonautsVideos268_All_30fpsmax'
-output_video_folder = r'C:\Users\andre\OneDrive\Documents\GitHub\Brainvision_Project\Videos_postprocessed'
+input_video_folder = r"C:\Users\andre\OneDrive\Documents\GitHub\Brainvision_Project\Motion_files\AlgonautsVideos268_All_30fpsmax"
+output_video_folder = r"C:\Users\andre\OneDrive\Documents\GitHub\Brainvision_Project\Motion_files\videos_adjusted"
 
 # Preprocess all videos in the folder
 preprocess_all_videos(input_video_folder, output_video_folder)
