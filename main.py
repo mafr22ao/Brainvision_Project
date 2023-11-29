@@ -1,4 +1,4 @@
-# import all other scripts
+# import all other scripts (apparently has to be .py files, so that it works...)
 from data_load import data_load
 from fmri_preprocessing import fmri_preprocessing
 from spacial_transformations import spacial_transformations
