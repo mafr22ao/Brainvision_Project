@@ -19,10 +19,5 @@ def find_repo_root(path='.'):
     return path
 
 
-def load_dict(filename_):
-    with open(filename_, 'rb') as f:
-        u = pickle._Unpickler(f)
-        u.encoding = 'latin1'
-        ret_di = u.load()
-    return ret_di
+
 
