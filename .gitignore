@@ -1,2 +1,9 @@
 
 *.mp4
+*.npy
+*.npz
+*.h5
+*.pickle
+*.pickle
+*.pickle
+*.pkl
