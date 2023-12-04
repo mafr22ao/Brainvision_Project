@@ -1,4 +1,4 @@
-# import all other scripts
+# import all other scripts (apparently has to be .py files, so that it works...)
 from data_load import data_load
 from fmri_preprocessing import fmri_preprocessing
 from spacial_transformations import spacial_transformations
@@ -8,7 +8,7 @@ from face_feature_extractor import face_feature_extractor
 from body_feature_extractor import body_feature_extractor
 from object_feature_extractor import object_feature_extractor
 from scene_feature_extractor import scene_feature_extractor
-from PCA import PCA
+from PCA import PCA_and_save
 from modelling import train_predictor, evaluate
 
 
@@ -27,6 +27,7 @@ if transformations:
     spacial_transformations()
 
 # create feature maps from videos in case they have not been created yet
+# ToDo: implement transformations as parameter (use different data input)
 if model == "Baseline":
     baseline_feature_extractor()
     motion_feature_extractor()
@@ -37,7 +38,7 @@ if model == "Specialized":
     scene_feature_extractor()
     motion_feature_extractor()
 
-data = PCA()
+data = PCA_and_save()
 
 train_predictor(data)
 evaluate()
