@@ -16,4 +16,3 @@ pyarrow
 fastparquet
 keras
 tensorflow
-gc
