@@ -1,82 +1,76 @@
 import cv2 as cv
+import numpy as np
 import os
 import re
-import numpy as np
 
-
-def calculate_optical_flow(video_path, output_folder, skip_frames=1, frame_window=72):
+def generate_optical_flow(video_path, output_path, target_flow_count=16, frame_skip=4):
     cap = cv.VideoCapture(video_path)
-    ret, first_frame = cap.read()
-    if not ret:
-        print("Failed to read the video")
+
+    if not cap.isOpened():
+        print(f"Error opening video file: {video_path}")
+        return
+
+    total_frames = int(cap.get(cv.CAP_PROP_FRAME_COUNT))
+    if total_frames < target_flow_count * frame_skip:
+        print(f"Not enough frames in video ({total_frames}) for {target_flow_count} flows with frame skip of {frame_skip}. Skipping.")
         cap.release()
         return
 
-    prev_gray = cv.cvtColor(first_frame, cv.COLOR_BGR2GRAY)
+    flow_stack = []
 
-    # Define the codec and create VideoWriter object
-    fourcc = cv.VideoWriter_fourcc(*'mp4v')  # Codec for MP4 format
-
-    # Extract file identifier from the input video filename
-    file_name = os.path.basename(video_path)
-    identifier = re.match(r'(\d{4})_processed\.mp4', file_name)
-    file_id = identifier.group(1) if identifier else "Unknown"
-
-    # Create the output video filename
-    output_video_name = f'{file_id}_flow.mp4'
-    output_video_path = os.path.join(output_folder, output_video_name)
-
-    # Adjust frame rate to 12 fps
-    out = cv.VideoWriter(output_video_path, fourcc, 12, (first_frame.shape[1], first_frame.shape[0]), isColor=True)
-
-    frame_count = 0
-    flow_accumulator = np.zeros((first_frame.shape[0], first_frame.shape[1], 2), dtype=np.float32)
-
-    while True:
+    for frame_count in range(0, total_frames, frame_skip):
         ret, frame = cap.read()
         if not ret:
             break
 
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-
-        if frame_count % skip_frames == 0:
-            if frame_count >= frame_window * skip_frames:
-                magnitude, angle = cv.cartToPolar(flow_accumulator[..., 0], flow_accumulator[..., 1])
-
-                hue = (angle * 180 / np.pi / 2).astype(np.uint8)
-                saturation = (magnitude * 255 / magnitude.max()).astype(np.uint8)
-                value = np.ones_like(hue) * 255
-
-                flow_rgb = cv.merge([hue, saturation, value])
-                flow_rgb = cv.cvtColor(flow_rgb, cv.COLOR_HSV2BGR)
-
-                out.write(flow_rgb)
-
-                flow_accumulator = np.zeros_like(flow_accumulator)
-
-            flow = cv.calcOpticalFlowFarneback(prev_gray, gray, None, 0.5, 3, 15, 3, 5, 1.2, 0)
-            flow_accumulator += flow
-
-        prev_gray = gray
-        frame_count += 1
+        if frame_count > 0:
+            prev_frame = gray
+            flow = cv.calcOpticalFlowFarneback(prev_frame, gray, None, 0.5, 3, 15, 3, 5, 1.2, 0)
+            flow_stack.append(flow[..., 0])
+            flow_stack.append(flow[..., 1])
 
     cap.release()
-    out.release()
+
+    if len(flow_stack) < target_flow_count * 2:
+        print("Not enough optical flows calculated in video:", video_path)
+        return
+
+    stacked_flow = np.stack(flow_stack[:target_flow_count * 2], axis=-1)
+
+    # Extracting the first four digits from the video file name
+    video_name = os.path.basename(video_path)
+    match = re.search(r'\d{4}', video_name)
+    if match:
+        name_prefix = match.group()
+    else:
+        print("No digits found in video name:", video_name)
+        return
+
+    # Save the stacked flow
+    output_filename = name_prefix + '_stackedopticalflow.npy'
+    np.save(os.path.join(output_path, output_filename), stacked_flow)
 
 
-def preprocess_all_videos(input_folder, output_folder):
-    for file_name in os.listdir(input_folder):
-        if file_name.endswith('_processed.mp4'):
-            input_video_path = os.path.join(input_folder, file_name)
+def process_videos_in_folder(folder_path, output_path):
+    for filename in os.listdir(folder_path):
+        if filename.endswith(".mp4"):  # Assuming videos are in .mp4 format
+            video_path = os.path.join(folder_path, filename)
+            generate_optical_flow(video_path, output_path)
+            print(f"Processed {filename}")
 
-            # Pass skip_frames and frame_window arguments
-            calculate_optical_flow(input_video_path, output_folder, skip_frames=None, frame_window=72)
+def process_videos_in_folder(folder_path, output_path):
+    for filename in os.listdir(folder_path):
+        if filename.endswith(".mp4"):  # Assuming videos are in .mp4 format
+            video_path = os.path.join(folder_path, filename)
+            generate_optical_flow(video_path, output_path)
+            print(f"Processed {filename}")
 
 
-# Folder paths
-input_video_folder = r"C:\Users\andre\OneDrive\Documents\GitHub\Brainvision_Project\Motion_files\videos_processed"
-output_video_folder = r"C:\Users\andre\OneDrive\Documents\GitHub\Brainvision_Project\Motion_files\Optica_flow"
+# Example usage
+folder_path = r"C:\Users\andre\OneDrive\Documents\GitHub\Brainvision_Project\Motion_files\videos_processed"
+output_path = r"C:\Users\andre\OneDrive\Documents\GitHub\Brainvision_Project\Motion_files\Optical_flow\stacked_img"
+process_videos_in_folder(folder_path, output_path)
 
-# Preprocess all videos in the folder
-preprocess_all_videos(input_video_folder, output_video_folder)
+
 
