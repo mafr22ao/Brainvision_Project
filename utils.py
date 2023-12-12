@@ -165,8 +165,14 @@ def get_pca(layer, mode="val", import_type="direct"):
     elif mode == "test":
         print("base_test shape: ", base_test.shape)
 
+    # detect motion feature type
+    motion_types = ["layer4", "avgpool", "stacked"]
+    for i in motion_types:
+        if os.path.exists(f"train_{i}.npy"):
+            motion_feature_type = i
+            break
+
     # load motion features
-    motion_feature_type = r"layer4"  # @param ["layer4", "avgpool"]
     if mode == "val":
         motion_train = np.load(f"train_{motion_feature_type}.npy")
         motion_val = np.load(f"val_{motion_feature_type}.npy")
