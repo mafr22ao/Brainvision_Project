@@ -114,8 +114,6 @@ def get_pca(layer, mode="val", import_type="direct"):
     ----------
     :param layer : which layer of the neural network to load
     :param mode: "val" to get train & validation data, "test" to get test data
-    :param import_type: either "direct" or indirect". Specifies if one single PCA file got loaded directly
-                        into the CWD, or there are separate files per video in a folder structure
     Returns
     -------
     train_pca, val_pca, test_pca: PCA data after train-val-test split
@@ -155,60 +153,31 @@ def get_pca(layer, mode="val", import_type="direct"):
         all_pcas = all_pcas.reshape(1000, -1)
 
     # Creating data splits
-    base_train = all_pcas[:800, :]
-    base_val = all_pcas[800:900, :]
-    base_test = all_pcas[900:, :]
+    train_pca = all_pcas[:800, :]
+    val_pca = all_pcas[800:900, :]
+    test_pca = all_pcas[900:, :]
 
     if mode == "val":
-        print("base_train shape: ", base_train.shape)
-        print("base_val shape: ", base_val.shape)
+        print("train_pca shape: ", train_pca.shape)
+        print("val_pca shape: ", val_pca.shape)
     elif mode == "test":
-        print("base_test shape: ", base_test.shape)
-
-    # detect motion feature type
-    motion_types = ["layer4", "avgpool", "stacked"]
-    for i in motion_types:
-        if os.path.exists(f"train_{i}.npy"):
-            motion_feature_type = i
-            break
-
-    # load motion features
-    if mode == "val":
-        motion_train = np.load(f"train_{motion_feature_type}.npy")
-        motion_val = np.load(f"val_{motion_feature_type}.npy")
-        print("motion_train shape: ", motion_train.shape)
-        print("motion_val shape: ", motion_val.shape)
-    elif mode == "test":
-        motion_train = np.load(f"train_{motion_feature_type}.npy")
-        motion_test = np.load(f"test_{motion_feature_type}.npy")
+        print("test_pca shape: ", test_pca.shape)
 
     # standardize model inputs
-    mean = np.mean(base_train, axis=tuple(range(base_train.ndim)))
-    std_dev = np.std(base_train, axis=tuple(range(base_train.ndim)))
-
-    # standardize motion inputs
-    motion_mean = np.mean(motion_train, axis=tuple(range(motion_train.ndim)))
-    motion_std_dev = np.std(motion_train, axis=tuple(range(motion_train.ndim)))
+    mean = np.mean(train_pca, axis=tuple(range(val_pca.ndim)))
+    std_dev = np.std(train_pca, axis=tuple(range(train_pca.ndim)))
 
     if mode == "val":
         # Standardize train & validation
-        base_train = (base_train - mean) / std_dev
-        base_val = (base_val - mean) / std_dev
-        motion_train = (motion_train - motion_mean) / motion_std_dev
-        motion_val = (motion_val - motion_mean) / motion_std_dev
+        train_pca = (train_pca - mean) / std_dev
+        val_pca = (val_pca - mean) / std_dev
 
-        pca_train = np.concatenate((base_train, motion_train), axis=1)
-        pca_val = np.concatenate((base_val, motion_val), axis=1)
-
-        return pca_train, pca_val
+        return train_pca, val_pca
     elif mode == "test":
         # Standardize test
-        base_test = (base_test - mean) / std_dev
-        motion_test = (motion_test - motion_mean) / motion_std_dev
+        test_pca = (test_pca - mean) / std_dev
 
-        pca_test = np.concatenate((base_test, motion_test), axis=1)
-
-        return pca_test
+        return test_pca
     else:
         print("Error: Unknown mode type")
 

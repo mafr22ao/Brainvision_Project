@@ -16,4 +16,4 @@ pyarrow
 fastparquet
 keras
 tensorflow
-gc
+requests
