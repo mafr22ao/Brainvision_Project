@@ -5,8 +5,8 @@ import tensorflow as tf
 import requests
 import zipfile
 import io
-
-
+import tensorflow as tf
+from keras.models import load_model
 def download_fmri():
     dropbox_link = 'https://www.dropbox.com/s/agxyxntrbwko7t1/participants_data.zip?dl=1'
 
@@ -108,7 +108,7 @@ def correlation_metric(y_true, y_pred):
     return tf.reduce_mean(correlation)
 
 
-def get_pca(layer, mode="val", import_type="direct", motion=True):
+def get_pca(layer, mode="val", import_type="direct"):
     """This function loads CNN features (preprocessed using PCA) into a
     numpy array according to a given layer.
     Parameters
@@ -117,7 +117,6 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
     :param mode: "val" to get train & validation data, "test" to get test data
     :param import_type: either "direct" or indirect". Specifies if one single PCA file got loaded directly
                         into the CWD, or there are separate files per video in a folder structure
-    :param motion: True/False, determines whether motion will be used as additional data input
     Returns
     -------
     train_pca, val_pca, test_pca: PCA data after train-val-test split
@@ -167,55 +166,48 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
     elif mode == "test":
         print("base_test shape: ", base_test.shape)
 
-    if motion:
-        # detect motion feature type
-        motion_types = ["layer4", "avgpool", "stacked"]
-        for i in motion_types:
-            if os.path.exists(f"train_{i}.npy"):
-                motion_feature_type = i
-                break
+    # detect motion feature type
+    motion_types = ["layer4", "avgpool", "stacked"]
+    for i in motion_types:
+        if os.path.exists(f"train_{i}.npy"):
+            motion_feature_type = i
+            break
 
-        # load motion features
-        if mode == "val":
-            motion_train = np.load(f"train_{motion_feature_type}.npy")
-            motion_val = np.load(f"val_{motion_feature_type}.npy")
-            print("motion_train shape: ", motion_train.shape)
-            print("motion_val shape: ", motion_val.shape)
-        elif mode == "test":
-            motion_train = np.load(f"train_{motion_feature_type}.npy")
-            motion_test = np.load(f"test_{motion_feature_type}.npy")
+    # load motion features
+    if mode == "val":
+        motion_train = np.load(f"train_{motion_feature_type}.npy")
+        motion_val = np.load(f"val_{motion_feature_type}.npy")
+        print("motion_train shape: ", motion_train.shape)
+        print("motion_val shape: ", motion_val.shape)
+    elif mode == "test":
+        motion_train = np.load(f"train_{motion_feature_type}.npy")
+        motion_test = np.load(f"test_{motion_feature_type}.npy")
 
     # standardize model inputs
     mean = np.mean(base_train, axis=tuple(range(base_train.ndim)))
     std_dev = np.std(base_train, axis=tuple(range(base_train.ndim)))
 
-    if motion:
-        # standardize motion inputs
-        motion_mean = np.mean(motion_train, axis=tuple(range(motion_train.ndim)))
-        motion_std_dev = np.std(motion_train, axis=tuple(range(motion_train.ndim)))
+    # standardize motion inputs
+    motion_mean = np.mean(motion_train, axis=tuple(range(motion_train.ndim)))
+    motion_std_dev = np.std(motion_train, axis=tuple(range(motion_train.ndim)))
 
     if mode == "val":
         # Standardize train & validation
         base_train = (base_train - mean) / std_dev
         base_val = (base_val - mean) / std_dev
-        if motion:
-            motion_train = (motion_train - motion_mean) / motion_std_dev
-            motion_val = (motion_val - motion_mean) / motion_std_dev
-            pca_train = np.concatenate((base_train, motion_train), axis=1)
-            pca_val = np.concatenate((base_val, motion_val), axis=1)
-        else:
-            pca_train = base_train
-            pca_val = base_val
+        motion_train = (motion_train - motion_mean) / motion_std_dev
+        motion_val = (motion_val - motion_mean) / motion_std_dev
+
+        pca_train = np.concatenate((base_train, motion_train), axis=1)
+        pca_val = np.concatenate((base_val, motion_val), axis=1)
 
         return pca_train, pca_val
     elif mode == "test":
         # Standardize test
         base_test = (base_test - mean) / std_dev
-        if motion:
-            motion_test = (motion_test - motion_mean) / motion_std_dev
-            pca_test = np.concatenate((base_test, motion_test), axis=1)
-        else:
-            pca_test = base_test
+        motion_test = (motion_test - motion_mean) / motion_std_dev
+
+        pca_test = np.concatenate((base_test, motion_test), axis=1)
 
         return pca_test
     else:
@@ -236,7 +228,7 @@ def get_fmri(ROI, track, sub, mode="val"):
     train & validation / test fmri data as arrays
     """
 
-    fmri_dir = os.path.join(os.getcwd(), "participants_data_v2021", track, sub)
+    fmri_dir = os.path.join(os.getcwd(), "../participants_data_v2021", track, sub)
 
     # Loading ROI data
     ROI_file = os.path.join(fmri_dir, ROI + ".pkl")
@@ -261,3 +253,121 @@ def get_fmri(ROI, track, sub, mode="val"):
         return ROI_test
     else:
         print("Error: Unknown mode type")
+
+
+def save_test_results(df1, df2, layer, data_mode="test"):
+    """
+    saves test results for testing / validation in csv files
+    :param df1: previously created df with one line per voxel, subject, ROI & layer
+    :param df2: previously created df aggregated over voxels and subject (yields score per ROI & layer)
+    :param layer: used stage of the feature extraction model
+    :param data_mode: set to "val" if validation scores have been calculated
+    """
+    if data_mode == "val":
+        mode_str = "_val"
+    else:
+        mode_str = ""
+    test_scores_dir = os.path.join(os.getcwd(), "test_scores")
+    if not os.path.exists(test_scores_dir):
+      os.makedirs(test_scores_dir)
+    df1.to_csv(os.path.join(test_scores_dir, f"test_results_{layer}{mode_str}.csv"), index=False)
+    df2.to_csv(os.path.join(test_scores_dir, f"test_results_aggregated_{layer}{mode_str}.csv"), index=False)
+
+
+def test_model(layer, ROI, sub, X_test, y_test, df, mode="test"):
+    """
+    reads in model for a certain stage, ROI & subject
+    tests the models, saves the predicted brain activations, and appends the test results to the results df
+    :param layer: used stage of the feature extraction model
+    :param ROI: region of interest
+    :param sub: current subject
+    :param X_test: test data. Use validation for mode "val" and test for mode "test"
+    :param y_test: test labels. Use validation for mode "val" and test for mode "test"
+    :param df: df containing previous testing results
+    :param mode:  set to "val" if validation scores have been calculated
+    """
+    """
+
+    :return: overview over correlation score values
+    """
+    # navigate to correct stored model
+    model_dir = os.path.join(os.getcwd(), "models", layer, ROI, sub)
+    model = load_model(model_dir + "/model.keras")
+
+    # calculate predicted voxel activations
+    prediction = model.predict(X_test)
+
+    # calculate evaluation metric
+    test_corr = calculate_vectorized_correlation(y_test, prediction)
+
+    # add evaluation metric results to the results dataframe
+    new_values = {'stage': layer, 'ROI': ROI, 'sub': sub, 'correlation_score': test_corr}
+    new_values = pd.DataFrame(new_values)
+    new_values['voxel'] = new_values.index + 1
+    df = pd.concat([df, new_values], ignore_index=True)
+
+    # save the predicted fmri's
+    if mode == "test":
+        predictions_dir = os.path.join(os.getcwd(), "predictions", layer, ROI, sub)
+        if not os.path.exists(predictions_dir):
+            os.makedirs(predictions_dir)
+        np.save('../prediction.npy', prediction)
+
+    return df
+
+
+def run_evaluation_pipeline(data_mode="test"):
+    """
+    evaluates previously trained and saved models. Saves detailed & aggregated summaries of correlation score as csv, and the predicted brain activations
+    :param data_mode: set to "test" for regular testing, and to "val" to get validation scores based on validation set
+    """
+    # load one only one main PCA file into the Ucloud session. This will determine the layer
+    layer_list = ["stage_1", "stage_2", "stage_3", "stage_4", "stage_5", "final"]
+    for i in layer_list:
+        if os.path.exists(f"{i}_pca.npy"):
+            layer = i
+            break
+
+    subs = ["sub01", "sub02", "sub03", "sub04", "sub05", "sub06", "sub07", "sub08", "sub09", "sub10"]
+    ROIs = ["WB", "V1", "V2", "V3", "V4", "LOC", "EBA", "FFA", "STS", "PPA"]
+
+    # test results dataframe
+    column_names = ['voxel', 'stage', 'ROI', 'sub', 'correlation_score']
+    test_results = pd.DataFrame(columns=column_names)
+
+    # get test data
+    if data_mode == "test":
+        X_test = get_pca(layer, mode=data_mode)
+    elif data_mode == "val":
+        X_train, X_val = get_pca(layer, mode=data_mode)
+
+    for sub in subs:
+        for ROI in ROIs:
+            # read in test data
+            if ROI == "WB":
+                track = "full_track"
+            else:
+                track = "mini_track"
+            try:
+                if data_mode == "test":
+                    y_test = get_fmri(ROI, track, sub, mode=data_mode)
+                    test_results = test_model(layer, ROI, sub, X_test, y_test, test_results, data_mode)
+                elif data_mode == "val":
+                    y_train, y_val = get_fmri(ROI, track, sub, mode=data_mode)
+                    test_results = test_model(layer, ROI, sub, X_val, y_val, test_results, data_mode)
+            except OSError:
+                print(f"Execution for {sub} ended at {ROI}")
+                break
+            print(f"finished testing sub: {sub}, ROI: {ROI}")
+
+    # calculate aggregated scores
+
+    # aggregate per subject
+    test_results_aggregated = test_results.groupby(["ROI", "stage", "sub"])["correlation_score"].agg(
+        np.mean).reset_index()
+    # aggregate over subjects
+    test_results_aggregated = test_results_aggregated.groupby(["ROI", "stage"])["correlation_score"].agg(
+        np.mean).reset_index()
+
+    # save the dataframes
+    save_test_results(test_results, test_results_aggregated, layer, data_mode)
