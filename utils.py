@@ -128,8 +128,14 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
     pca_dir = os.getcwd()
 
     if import_type == "direct":
-        with open(f"{layer}_pca.pkl", 'rb') as file:
-            all_pcas = pickle.load(file)
+        try:
+            with open(f"{layer}_pca.pkl", 'rb') as file:
+                all_pcas = pickle.load(file)
+        except:
+            all_pcas = np.load(f"{layer}_pca.npy")
+
+        # reshape
+        all_pcas = all_pcas.reshape(1000, -1)
     else:
         # numpy arrays of the PCA results
         all_pcas = []
