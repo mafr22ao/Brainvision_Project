@@ -17,3 +17,4 @@ fastparquet
 keras
 tensorflow
 requests
+# tensorflow-gpu
