@@ -131,6 +131,8 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
         try:
             with open(f"{layer}_pca.pkl", 'rb') as file:
                 all_pcas = pickle.load(file)
+                if isinstance(all_pcas, dict):
+                    all_pcas = np.array(list(all_pcas.values()))
         except:
             all_pcas = np.load(f"{layer}_pca.npy")
 
