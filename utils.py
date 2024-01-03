@@ -266,7 +266,7 @@ def get_fmri(ROI, track, sub, mode="val"):
         print("ROI_val shape: ", ROI_val.shape)
         return ROI_train, ROI_val
     elif mode == "test":
-        print("ROI_test shape: ", ROI_test.shape)
+        # print("ROI_test shape: ", ROI_test.shape)
         return ROI_test
     else:
         print("Error: Unknown mode type")
