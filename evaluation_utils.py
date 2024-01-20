@@ -92,7 +92,7 @@ def run_evaluation_pipeline(data_mode="test"):
     # load one only one main PCA file into the Ucloud session. This will determine the layer
     layer_list = ["stage_1", "stage_2", "stage_3", "stage_4", "stage_5", "final"]
     for i in layer_list:
-        if os.path.exists(f"{i}_pca.npy"):
+        if os.path.exists(f"{i}_pca.npy") or os.path.exists(f"{i}_pca.pkl"):
             layer = i
             break
 
@@ -127,6 +127,7 @@ def run_evaluation_pipeline(data_mode="test"):
                         test_results = test_model(model_name, layer, ROI, sub, X_test, y_test, test_results, data_mode)
                 elif data_mode == "val":
                     y_train, y_val = get_fmri(ROI, track, sub, mode=data_mode)
+                    print(len(list(set(os.listdir(model_path)))))
                     for model_name in os.listdir(model_path):
                         test_results = test_model(model_name, layer, ROI, sub, X_val, y_val, test_results, data_mode)
             except OSError:
