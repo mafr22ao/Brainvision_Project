@@ -15,15 +15,11 @@ def save_test_results(df1, df2, layer, data_mode="test"):
     :param layer: used stage of the feature extraction model
     :param data_mode: set to "val" if validation scores have been calculated
     """
-    if data_mode == "val":
-        mode_str = "_val"
-    else:
-        mode_str = ""
     test_scores_dir = os.path.join(os.getcwd(), "test_scores")
     if not os.path.exists(test_scores_dir):
       os.makedirs(test_scores_dir)
-    df1.to_csv(os.path.join(test_scores_dir, f"test_results_{layer}{mode_str}.csv"), index=False)
-    df2.to_csv(os.path.join(test_scores_dir, f"test_results_aggregated_{layer}{mode_str}.csv"), index=False)
+    df1.to_csv(os.path.join(test_scores_dir, f"test_results.csv"), index=False)
+    df2.to_csv(os.path.join(test_scores_dir, f"test_results_aggregated.csv"), index=False)
 
 
 def test_model(model_name, layer, ROI, sub, X_test, y_test, df, mode="test"):
