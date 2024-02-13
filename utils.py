@@ -128,7 +128,16 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
     pca_dir = os.getcwd()
 
     if import_type == "direct":
-        all_pcas = np.load(f"{layer}_pca.npy")
+        try:
+            with open(f"{layer}_pca.pkl", 'rb') as file:
+                all_pcas = pickle.load(file)
+                if isinstance(all_pcas, dict):
+                    all_pcas = np.array(list(all_pcas.values()))
+        except:
+            all_pcas = np.load(f"{layer}_pca.npy")
+
+        # reshape
+        all_pcas = all_pcas.reshape(1000, -1)
     else:
         # numpy arrays of the PCA results
         all_pcas = []
@@ -257,7 +266,7 @@ def get_fmri(ROI, track, sub, mode="val"):
         print("ROI_val shape: ", ROI_val.shape)
         return ROI_train, ROI_val
     elif mode == "test":
-        print("ROI_test shape: ", ROI_test.shape)
+        # print("ROI_test shape: ", ROI_test.shape)
         return ROI_test
     else:
         print("Error: Unknown mode type")

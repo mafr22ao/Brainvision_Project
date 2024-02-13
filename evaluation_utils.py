@@ -2,6 +2,7 @@ import os
 import pickle
 import numpy as np
 import tensorflow as tf
+import pandas as pd
 from keras.models import load_model
 from utils import calculate_vectorized_correlation, get_pca, get_fmri
 
@@ -14,15 +15,11 @@ def save_test_results(df1, df2, layer, data_mode="test"):
     :param layer: used stage of the feature extraction model
     :param data_mode: set to "val" if validation scores have been calculated
     """
-    if data_mode == "val":
-        mode_str = "_val"
-    else:
-        mode_str = ""
     test_scores_dir = os.path.join(os.getcwd(), "test_scores")
     if not os.path.exists(test_scores_dir):
       os.makedirs(test_scores_dir)
-    df1.to_csv(os.path.join(test_scores_dir, f"test_results_{layer}{mode_str}.csv"), index=False)
-    df2.to_csv(os.path.join(test_scores_dir, f"test_results_aggregated_{layer}{mode_str}.csv"), index=False)
+    df1.to_csv(os.path.join(test_scores_dir, f"test_results.csv"), index=False)
+    df2.to_csv(os.path.join(test_scores_dir, f"test_results_aggregated.csv"), index=False)
 
 
 def test_model(model_name, layer, ROI, sub, X_test, y_test, df, mode="test"):
@@ -39,17 +36,18 @@ def test_model(model_name, layer, ROI, sub, X_test, y_test, df, mode="test"):
 
     :return: overview over correlation score values
     """
+    print("testing model: ", model_name)
 
     # navigate to correct stored model
-    model_dir = os.path.join(os.getcwd(), "models", layer, ROI, sub)
-    model = load_model(model_dir + model_name)
+    model_dir = os.path.join(os.getcwd(), "models", layer, ROI, sub, model_name)
+    model = load_model(model_dir)
 
     # extract hyperparameter settings from model_name
     split_string = model_name.split('_')
     num_hidden_layers = int(split_string[2])
     learning_rate = float(split_string[4])
     dropout = float(split_string[6])
-    l2_reg = float(split_string[8].split(".")[0])
+    l2_reg = float(split_string[8].replace(".keras", ""))
 
     # calculate predicted voxel activations
     prediction = model.predict(X_test)
@@ -76,7 +74,8 @@ def test_model(model_name, layer, ROI, sub, X_test, y_test, df, mode="test"):
         predictions_dir = os.path.join(os.getcwd(), "predictions", layer, ROI, sub)
         if not os.path.exists(predictions_dir):
             os.makedirs(predictions_dir)
-        np.save('prediction.npy', prediction)
+        np.save(f'prediction_hidden_{num_hidden_layers}_lr_{learning_rate}_dropout_{dropout}_l2_{l2_reg}".npy',
+                prediction)
 
     return df
 
@@ -89,7 +88,7 @@ def run_evaluation_pipeline(data_mode="test"):
     # load one only one main PCA file into the Ucloud session. This will determine the layer
     layer_list = ["stage_1", "stage_2", "stage_3", "stage_4", "stage_5", "final"]
     for i in layer_list:
-        if os.path.exists(f"{i}_pca.npy"):
+        if os.path.exists(f"{i}_pca.npy") or os.path.exists(f"{i}_pca.pkl"):
             layer = i
             break
 
@@ -124,6 +123,7 @@ def run_evaluation_pipeline(data_mode="test"):
                         test_results = test_model(model_name, layer, ROI, sub, X_test, y_test, test_results, data_mode)
                 elif data_mode == "val":
                     y_train, y_val = get_fmri(ROI, track, sub, mode=data_mode)
+                    print(len(list(set(os.listdir(model_path)))))
                     for model_name in os.listdir(model_path):
                         test_results = test_model(model_name, layer, ROI, sub, X_val, y_val, test_results, data_mode)
             except OSError:
@@ -135,14 +135,14 @@ def run_evaluation_pipeline(data_mode="test"):
 
     # aggregate per subject
     test_results_aggregated = test_results.groupby(["ROI", "stage", "sub",
-                                                    'num_hidden_layers', 'learning_rate', 'dropout', 'l2_reg',
-                                                    'correlation_score'])["correlation_score"].agg(
+                                                    'num_hidden_layers', 'learning_rate', 'dropout', 'l2_reg']
+                                                   )["correlation_score"].agg(
                                                     np.mean).reset_index()
     # aggregate over subjects
     test_results_aggregated = test_results_aggregated.groupby(["ROI", "stage",
                                                                'num_hidden_layers', 'learning_rate',
                                                                'dropout', 'l2_reg',
-                                                               'correlation_score'])["correlation_score"].agg(
+                                                              ])["correlation_score"].agg(
                                                                 np.mean).reset_index()
 
     # save the dataframes
