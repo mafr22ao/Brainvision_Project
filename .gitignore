@@ -4,13 +4,10 @@
 *.npz
 *.h5
 *.pickle
-*.pickle
-*.pickle
 *.pkl
 *.png
-Motion_files/Layers-features.zip
-Motion_files/Layers-features.zip
-Motion_files/Layers-features.zip
+*.xlsx
+*.csv
 Motion_files/Layers-features.zip
 *.zip
 .idea/
