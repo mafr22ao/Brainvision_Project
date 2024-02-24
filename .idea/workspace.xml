@@ -4,13 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af140983-a89c-437a-845f-bcdead5061ae" name="Changes" comment="bug fixing">
-      <change afterPath="$PROJECT_DIR$/pca_main_new/reformat_files.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="af140983-a89c-437a-845f-bcdead5061ae" name="Changes" comment="implemented changes from gpu modelling into modelling file for CPU">
+      <change afterPath="$PROJECT_DIR$/Files for model training/evaluation.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files for model training/evaluation_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files for model training/modelling.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files for model training/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files for model training/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/correlation_score_comparison.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results_analysis.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (10).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (2).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (3).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (4).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (5).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (6).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (7).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (8).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (9).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_results_motion_overview.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluation_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/PCA_stacked_preprocessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Motion_files/PCA_stacked_preprocessing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROI_mapping.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/ROI_mapping.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baseline_feature_extractor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/body_feature_extractor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_load.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/face_feature_extractor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fmri_preprocessing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/modelling.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/modelling.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/motion_feature_extractor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scene_feature_extractor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spacial_transformations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/torch_test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +92,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/julia/OneDrive - CBS - Copenhagen Business School/Documents/Master/Semester3/AdvancedML/Brainvision_Project/utils.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/julia/OneDrive - CBS - Copenhagen Business School/Documents/Master/Semester3/AdvancedML/Brainvision_Project&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -134,7 +159,16 @@
       <workItem from="1703244941968" duration="668000" />
       <workItem from="1703245817499" duration="8732000" />
       <workItem from="1703344033067" duration="833000" />
-      <workItem from="1703354534116" duration="4360000" />
+      <workItem from="1703354534116" duration="5257000" />
+      <workItem from="1703588867857" duration="2026000" />
+      <workItem from="1703624262407" duration="2402000" />
+      <workItem from="1703703912930" duration="593000" />
+      <workItem from="1704805697221" duration="2035000" />
+      <workItem from="1704914564501" duration="584000" />
+      <workItem from="1705777876854" duration="8415000" />
+      <workItem from="1706479003499" duration="4052000" />
+      <workItem from="1707218139767" duration="1046000" />
+      <workItem from="1708275412411" duration="20584000" />
     </task>
     <task id="LOCAL-00001" summary="created new file structure - implement code in the new files">
       <option name="closed" value="true" />
@@ -344,7 +378,31 @@
       <option name="project" value="LOCAL" />
       <updated>1703328271269</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="bug fixing">
+      <option name="closed" value="true" />
+      <created>1703368941262</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1703368941262</updated>
+    </task>
+    <task id="LOCAL-00028" summary="bug fixing">
+      <option name="closed" value="true" />
+      <created>1703611938754</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1703611938754</updated>
+    </task>
+    <task id="LOCAL-00029" summary="implemented changes from gpu modelling into modelling file for CPU">
+      <option name="closed" value="true" />
+      <created>1705831977852</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1705831977852</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,7 +442,8 @@
     <MESSAGE value="improved HP choice. Built code framework for HPO. Better aitomation for modelling &amp; automation. Added creation of stacked motion features. Bug fixing." />
     <MESSAGE value="implemented HPO. Code testing tbd" />
     <MESSAGE value="bug fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixing" />
+    <MESSAGE value="implemented changes from gpu modelling into modelling file for CPU" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented changes from gpu modelling into modelling file for CPU" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Brainvision_Project$main.coverage" NAME="main Coverage Results" MODIFIED="1700827957515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
