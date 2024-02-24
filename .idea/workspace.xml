@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af140983-a89c-437a-845f-bcdead5061ae" name="Changes" comment="bug fixing">
-      <change afterPath="$PROJECT_DIR$/pca_main_new/reformat_files.ipynb" afterDir="false" />
+    <list default="true" id="35674559-c345-4387-8616-fe934f45ad4c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluation_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelling.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/modelling.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/Optical_flow_hue_frames.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/PCA_activations.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/Resnet50_stackedflow.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/Slowfast_featuremaps.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/example.nii" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/helpers/videos_to_tensor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/videos_processed/PCA_per_layer.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,365 +32,157 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;julianthr&quot;
-  }
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="d43e3e07-c7c2-433b-b22c-4901a65cb70a" />
-        <option name="url" value="https://github.com/mafr22ao/Brainvision_Project.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2YAGbDVy2iA2ECdSzjKhoDtqR4x" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2ZjFMYdEdQ0xwIRh5vGkqVg8tAF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Python.check_cuda.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model_base.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model_inspection.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/julia/OneDrive - CBS - Copenhagen Business School/Documents/Master/Semester3/AdvancedML/Brainvision_Project/utils.py&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/venv39&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/julia/OneDrive - CBS - Copenhagen Business School/Documents/Master/Semester3/AdvancedML/Brainvision_Project/utils.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\julia\OneDrive - CBS - Copenhagen Business School\Documents\Master\Semester3\AdvancedML\Brainvision_Project\Old Files" />
-    </key>
+  <component name="RunManager" selected="Python.check_cuda">
+    <configuration name="check_cuda" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Brainvision_Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Motion_files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Motion_files/check_cuda.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="model_base" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Brainvision_Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Motion_files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Motion_files/model_base.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="model_inspection" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Brainvision_Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Motion_files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Motion_files/model_inspection.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.check_cuda" />
+        <item itemvalue="Python.model_base" />
+        <item itemvalue="Python.model_inspection" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+        <option value="bundled-python-sdk-7a29c1521ef0-c986f194a52a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.11799.298" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="af140983-a89c-437a-845f-bcdead5061ae" name="Changes" comment="" />
-      <created>1699961039696</created>
+      <changelist id="35674559-c345-4387-8616-fe934f45ad4c" name="Changes" comment="" />
+      <created>1702927534634</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1699961039696</updated>
-      <workItem from="1699961040740" duration="1829000" />
-      <workItem from="1699965194239" duration="821000" />
-      <workItem from="1700563063395" duration="596000" />
-      <workItem from="1700654474515" duration="8839000" />
-      <workItem from="1701020017473" duration="19751000" />
-      <workItem from="1701275166819" duration="18582000" />
-      <workItem from="1701621375975" duration="4297000" />
-      <workItem from="1701627855282" duration="3273000" />
-      <workItem from="1701636136947" duration="6868000" />
-      <workItem from="1701687115246" duration="1325000" />
-      <workItem from="1701688755667" duration="19000" />
-      <workItem from="1701688805023" duration="3028000" />
-      <workItem from="1701692530644" duration="6470000" />
-      <workItem from="1701707491110" duration="2427000" />
-      <workItem from="1701710188511" duration="3808000" />
-      <workItem from="1701724203054" duration="143000" />
-      <workItem from="1701724371017" duration="49000" />
-      <workItem from="1701724531595" duration="856000" />
-      <workItem from="1701725462046" duration="11512000" />
-      <workItem from="1701853567013" duration="14620000" />
-      <workItem from="1702212655304" duration="1837000" />
-      <workItem from="1702214525464" duration="17472000" />
-      <workItem from="1702321561133" duration="53000" />
-      <workItem from="1702321741666" duration="915000" />
-      <workItem from="1702324021820" duration="228000" />
-      <workItem from="1702324265246" duration="92000" />
-      <workItem from="1702324378887" duration="990000" />
-      <workItem from="1702325491414" duration="256000" />
-      <workItem from="1702325764266" duration="243000" />
-      <workItem from="1702326024158" duration="3725000" />
-      <workItem from="1702401944735" duration="6405000" />
-      <workItem from="1702459512601" duration="15177000" />
-      <workItem from="1702829967792" duration="5088000" />
-      <workItem from="1703244941968" duration="668000" />
-      <workItem from="1703245817499" duration="8732000" />
-      <workItem from="1703344033067" duration="833000" />
-      <workItem from="1703354534116" duration="4360000" />
+      <updated>1702927534634</updated>
+      <workItem from="1702927538540" duration="1307000" />
+      <workItem from="1702968961083" duration="17000" />
+      <workItem from="1702968989334" duration="628000" />
+      <workItem from="1702969666301" duration="7991000" />
+      <workItem from="1703026396352" duration="4487000" />
+      <workItem from="1703131657152" duration="15641000" />
+      <workItem from="1703151636632" duration="724000" />
+      <workItem from="1703196025771" duration="8141000" />
+      <workItem from="1703278395081" duration="55244000" />
+      <workItem from="1704268943750" duration="1139000" />
+      <workItem from="1704481457002" duration="3280000" />
+      <workItem from="1707847963562" duration="82000" />
     </task>
-    <task id="LOCAL-00001" summary="created new file structure - implement code in the new files">
-      <option name="closed" value="true" />
-      <created>1700666275983</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1700666275983</updated>
-    </task>
-    <task id="LOCAL-00002" summary="implement code from challenge into file structure">
-      <option name="closed" value="true" />
-      <created>1701020115007</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1701020115007</updated>
-    </task>
-    <task id="LOCAL-00003" summary="minor changes">
-      <option name="closed" value="true" />
-      <created>1701159260788</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1701159260788</updated>
-    </task>
-    <task id="LOCAL-00004" summary="small repo cleanup; first steps for predictions with dense layer">
-      <option name="closed" value="true" />
-      <created>1701253497774</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1701253497774</updated>
-    </task>
-    <task id="LOCAL-00005" summary="adjustments to challenge code on modelling">
-      <option name="closed" value="true" />
-      <created>1701264658429</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1701264658429</updated>
-    </task>
-    <task id="LOCAL-00006" summary="started implementing dense layer training">
-      <option name="closed" value="true" />
-      <created>1701266864639</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1701266864639</updated>
-    </task>
-    <task id="LOCAL-00007" summary="replaced torch with tensorflow">
-      <option name="closed" value="true" />
-      <created>1701380159862</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1701380159862</updated>
-    </task>
-    <task id="LOCAL-00008" summary="replaced torch with tensorflow">
-      <option name="closed" value="true" />
-      <created>1701441490282</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1701441490282</updated>
-    </task>
-    <task id="LOCAL-00009" summary="modelling: adjust to test PCA files">
-      <option name="closed" value="true" />
-      <created>1701443165772</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1701443165772</updated>
-    </task>
-    <task id="LOCAL-00010" summary="FCN is running!">
-      <option name="closed" value="true" />
-      <created>1701529559142</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1701529559142</updated>
-    </task>
-    <task id="LOCAL-00011" summary="started building evaluation &amp; include correlation metric in keras">
-      <option name="closed" value="true" />
-      <created>1701686894242</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1701686894242</updated>
-    </task>
-    <task id="LOCAL-00012" summary="cleaned modelling &amp; moved functions to utils">
-      <option name="closed" value="true" />
-      <created>1701691988691</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1701691988691</updated>
-    </task>
-    <task id="LOCAL-00013" summary="cleaned modeling &amp; prepared for Ucloud run. Finished evaluation">
-      <option name="closed" value="true" />
-      <created>1701768254066</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1701768254082</updated>
-    </task>
-    <task id="LOCAL-00014" summary="cleaned modeling &amp; prepared for Ucloud run. Finished evaluation">
-      <option name="closed" value="true" />
-      <created>1701785969754</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1701785969754</updated>
-    </task>
-    <task id="LOCAL-00015" summary="minor improvements to modelling &amp; evaluation">
-      <option name="closed" value="true" />
-      <created>1701810999709</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1701810999709</updated>
-    </task>
-    <task id="LOCAL-00016" summary="reduced manual work in evaluation &amp; modeling, implemented motion files, added overfitting handling to model, implemented validation testing">
-      <option name="closed" value="true" />
-      <created>1702316521917</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1702316521917</updated>
-    </task>
-    <task id="LOCAL-00017" summary="reduced manual work in evaluation &amp; modeling, implemented motion files, added overfitting handling to model, implemented validation testing">
-      <option name="closed" value="true" />
-      <created>1702316582671</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1702316582671</updated>
-    </task>
-    <task id="LOCAL-00018" summary="deleted old models, adjusted gitignore">
-      <option name="closed" value="true" />
-      <created>1702318434163</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1702318434163</updated>
-    </task>
-    <task id="LOCAL-00019" summary="deleted old models, adjusted gitignore">
-      <option name="closed" value="true" />
-      <created>1702324095602</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1702324095602</updated>
-    </task>
-    <task id="LOCAL-00020" summary="readded modelling files">
-      <option name="closed" value="true" />
-      <created>1702326119004</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1702326119004</updated>
-    </task>
-    <task id="LOCAL-00021" summary="readded modelling files pt2">
-      <option name="closed" value="true" />
-      <created>1702326156027</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1702326156027</updated>
-    </task>
-    <task id="LOCAL-00022" summary="update gitignore">
-      <option name="closed" value="true" />
-      <created>1702326558573</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1702326558573</updated>
-    </task>
-    <task id="LOCAL-00023" summary="improved HP choice. Built code framework for HPO. Better aitomation for modelling &amp; automation. Added creation of stacked motion features. Bug fixing.">
-      <option name="closed" value="true" />
-      <created>1702422696683</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1702422696683</updated>
-    </task>
-    <task id="LOCAL-00024" summary="implemented HPO. Code testing tbd">
-      <option name="closed" value="true" />
-      <created>1702464689998</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1702464689998</updated>
-    </task>
-    <task id="LOCAL-00025" summary="bug fixing">
-      <option name="closed" value="true" />
-      <created>1702847973075</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1702847973075</updated>
-    </task>
-    <task id="LOCAL-00026" summary="bug fixing">
-      <option name="closed" value="true" />
-      <created>1703328271269</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1703328271269</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="created new file structure - implement code in the new files" />
-    <MESSAGE value="implement code from challenge into file structure" />
-    <MESSAGE value="minor changes" />
-    <MESSAGE value="small repo cleanup; first steps for predictions with dense layer" />
-    <MESSAGE value="adjustments to challenge code on modelling" />
-    <MESSAGE value="started implementing dense layer training" />
-    <MESSAGE value="replaced torch with tensorflow" />
-    <MESSAGE value="modelling: adjust to test PCA files" />
-    <MESSAGE value="FCN is running!" />
-    <MESSAGE value="started building evaluation &amp; include correlation metric in keras" />
-    <MESSAGE value="cleaned modelling &amp; moved functions to utils" />
-    <MESSAGE value="cleaned modeling &amp; prepared for Ucloud run. Finished evaluation" />
-    <MESSAGE value="minor improvements to modelling &amp; evaluation" />
-    <MESSAGE value="reduced manual work in evaluation &amp; modeling, implemented motion files, added overfitting handling to model, implemented validation testing" />
-    <MESSAGE value="deleted old models, adjusted gitignore" />
-    <MESSAGE value="readded modelling files" />
-    <MESSAGE value="readded modelling files pt2" />
-    <MESSAGE value="update gitignore" />
-    <MESSAGE value="improved HP choice. Built code framework for HPO. Better aitomation for modelling &amp; automation. Added creation of stacked motion features. Bug fixing." />
-    <MESSAGE value="implemented HPO. Code testing tbd" />
-    <MESSAGE value="bug fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixing" />
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Brainvision_Project$main.coverage" NAME="main Coverage Results" MODIFIED="1700827957515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Resnet50_stackedflow_ipynb$check_cuda.coverage" NAME="check_cuda Coverage Results" MODIFIED="1703151583857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Motion_files" />
+    <SUITE FILE_PATH="coverage/model_inspection_py$model_base.coverage" NAME="model_base Coverage Results" MODIFIED="1703320616731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Motion_files" />
+    <SUITE FILE_PATH="coverage/model_inspection_py$check_cuda.coverage" NAME="check_cuda Coverage Results" MODIFIED="1703343770319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Motion_files" />
+    <SUITE FILE_PATH="coverage/vid_utils_py$check_cuda.coverage" NAME="check_cuda Coverage Results" MODIFIED="1705759357601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Motion_files" />
+    <SUITE FILE_PATH="coverage/Resnet50_stackedflow_ipynb$model_inspection.coverage" NAME="model_inspection Coverage Results" MODIFIED="1703150662316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Motion_files" />
+    <SUITE FILE_PATH="coverage/model_inspection_py$model_inspection.coverage" NAME="model_inspection Coverage Results" MODIFIED="1703278977515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Motion_files" />
   </component>
 </project>
