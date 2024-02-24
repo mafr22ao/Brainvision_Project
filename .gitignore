@@ -11,3 +11,9 @@
 Motion_files/Layers-features.zip
 *.zip
 .idea/
+*.xml
+*.xml
+*.xml
+.idea/misc.xml
+.idea/workspace.xml
+.idea/.name
