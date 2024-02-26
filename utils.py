@@ -8,6 +8,10 @@ import io
 
 
 def download_fmri():
+    """
+    Downloads the fMRI data from dropbox link
+    adapted from the 2021 Algonauts challenge code
+    """
     dropbox_link = 'https://www.dropbox.com/s/agxyxntrbwko7t1/participants_data.zip?dl=1'
 
     if dropbox_link:
@@ -48,28 +52,6 @@ def load_dict(filename_):
         ret_di = u.load()
     return ret_di
 
-# def calculate_vectorized_correlation(x, y):
-#     """
-#     Calculate evaluation score (per voxel)
-#     :param: x - prediction voxel activations; y - actual voxel activations
-#     :return: evaluation score
-#     Taken from challenge code from 2021 Algonauts challenge
-#     """
-#     dim = 0
-#
-#     centered_x = x - tf.reduce_mean(x, axis=dim, keepdims=True)
-#     centered_y = y - tf.reduce_mean(y, axis=dim, keepdims=True)
-#
-#     covariance = tf.reduce_sum(centered_x * centered_y, axis=dim, keepdims=True)
-#     covariance = covariance / tf.cast(tf.shape(x)[dim], tf.float32)
-#
-#     x_std = tf.math.reduce_std(x, axis=dim, keepdims=True) + 1e-8
-#     y_std = tf.math.reduce_std(y, axis=dim, keepdims=True) + 1e-8
-#
-#     corr = covariance / (x_std * y_std)
-#
-#     return tf.reshape(corr, [-1])
-
 
 def calculate_vectorized_correlation(x, y):
     """
@@ -96,18 +78,6 @@ def calculate_vectorized_correlation(x, y):
     return corr.ravel()
 
 
-def correlation_metric(y_true, y_pred):
-    """
-    makes "vectorized_correlation" usable as a keras metric for model validation & testing
-    :param y_true:
-    :param y_pred:
-    :return:
-    """
-
-    correlation = tf.py_function(calculate_vectorized_correlation, [y_true, y_pred], tf.float32)
-    return tf.reduce_mean(correlation)
-
-
 def get_pca(layer, mode="val", import_type="direct", motion=True):
     """This function loads CNN features (preprocessed using PCA) into a
     numpy array according to a given layer.
@@ -120,7 +90,7 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
     :param motion: True/False, determines whether motion will be used as additional data input
     Returns
     -------
-    train_pca, val_pca, test_pca: PCA data after train-val-test split
+    train_pca & val_pca or test_pca: PCA data after train-val-test split. Includes motion data if motion=True
 
     """
 
@@ -177,7 +147,7 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
         print("base_test shape: ", base_test.shape)
 
     if motion:
-        # detect motion feature type
+        # detect motion feature type (different types tried out during the project)
         motion_types = ["layer4", "avgpool", "stacked"]
         for i in motion_types:
             if os.path.exists(f"train_{i}.npy"):
@@ -233,7 +203,8 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
 
 def get_fmri(ROI, track, sub, mode="val"):
     """
-    This function loads fMRI data into a numpy array for to a given ROI.
+    This function retrieves the fMRI data for a given ROI & subject
+    Inspired by the 2021 Algonauts challenge code
     Parameters
     ----------
     :param ROI: ROI of interest
