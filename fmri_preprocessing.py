@@ -63,26 +63,3 @@ def get_fmri(sub, ROI, avg=True):
     ROI_data = load_dict(os.path.join(sub_fmri_dir, f"{ROI}.pkl"))
     data = np.mean(ROI_data["train"], axis=1) if avg else ROI_data["train"]
     return (data, ROI_data['voxel_mask']) if ROI == "WB" else data
-
-
-def get_avg_fmri_per_video(ROIs, subs):
-    # Initialize a dictionary to store the concatenated activations for each ROI
-    concatenated_activations = {ROI: None for ROI in ROIs}
-
-    # Loop through each ROI and subject, concatenate activations
-    for ROI in ROIs:
-        concatenated_data = []  # Temporary list to hold concatenated data for this ROI
-        for sub in subs:
-            fmri_data = get_fmri(sub, ROI)
-            concatenated_data.append(fmri_data)
-        # Concatenate along the second axis (features)
-        concatenated_activations[ROI] = np.concatenate(concatenated_data, axis=1)
-
-    # Compute the mean of the concatenated values across the feature dimension for each video
-    avg_activation_per_video = {}
-    for ROI, data in concatenated_activations.items():
-        if data is not None:
-            # Mean across the feature dimension (axis=1) for each video
-            avg_activation_per_video[ROI] = np.mean(data, axis=1)
-
-    return avg_activation_per_video
