@@ -4,17 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35674559-c345-4387-8616-fe934f45ad4c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="35674559-c345-4387-8616-fe934f45ad4c" name="Changes" comment="git cleaning">
+      <change beforePath="$PROJECT_DIR$/.idea/Brainvision_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Brainvision_Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Motion_files/Optical_flow_hue_frames.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Motion_files/PCA_activations.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Motion_files/Resnet50_stackedflow.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Motion_files/Slowfast_featuremaps.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Motion_files/example.nii" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Motion_files/helpers/videos_to_tensor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Motion_files/videos_processed/PCA_per_layer.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion_files/Avg_reduced_stacked_preprocessing.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/Algonauts2021_prepare_baseline_submission.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/CCN2021_Algonauts.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/Classification.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/PCA.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/fMRI_preprocessing.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/mp_brainvision_load_algonauts_videos.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/mp_brainvision_load_kay_images.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/pca_main_new/reformat_files.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/utils_old.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old Files/video_pre-processing.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROI_mapping.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/RDMS.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/ROI_sub_RDMS/rsa_results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/ROI_sub_RDMS/rsa_results_avgpool.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/ROI_sub_RDMS/rsa_results_stage1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/ROI_sub_RDMS/rsa_results_stage5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/ROI_sub_RDMS/rsa_stage5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/RSA_full.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/example.nii" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/rsa_results.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/rsa_results_avgpool_resnet503d.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/rsa_results_stage1.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5 - RSA/rsa_results_stage5.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/correlation_score_comparison.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/description.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelling.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelling_1gpu.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp_brainvision.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/play_video.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results_analysis.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (10).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (2).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (3).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (4).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (5).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (6).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (7).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (8).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice_results_non_aggregated/test_results (9).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_results_motion_overview.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +80,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2ZjFMYdEdQ0xwIRh5vGkqVg8tAF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -147,7 +187,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-7a29c1521ef0-c986f194a52a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.11799.298" />
+        <option value="bundled-python-sdk-d68999036c7f-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.14475.56" />
       </set>
     </attachedChunks>
   </component>
@@ -171,11 +211,35 @@
       <workItem from="1704268943750" duration="1139000" />
       <workItem from="1704481457002" duration="3280000" />
       <workItem from="1707847963562" duration="82000" />
+      <workItem from="1709055119972" duration="7105000" />
     </task>
+    <task id="LOCAL-00001" summary="deleted old folder">
+      <option name="closed" value="true" />
+      <created>1708804536218</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708804536218</updated>
+    </task>
+    <task id="LOCAL-00002" summary="git cleaning">
+      <option name="closed" value="true" />
+      <created>1708977557394</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708977557394</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="cleaned all my code files. Removed irrelevant code files" />
+    <MESSAGE value="deleted old folder" />
+    <MESSAGE value="git cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="git cleaning" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Resnet50_stackedflow_ipynb$check_cuda.coverage" NAME="check_cuda Coverage Results" MODIFIED="1703151583857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Motion_files" />
