@@ -108,7 +108,7 @@ def correlation_metric(y_true, y_pred):
     return tf.reduce_mean(correlation)
 
 
-def get_pca(layer, mode="val", import_type="direct", motion=True):
+def get_pca(layer, mode="val", import_type="direct", transformation=None, motion=True):
     """This function loads CNN features (preprocessed using PCA) into a
     numpy array according to a given layer.
     Parameters
@@ -138,6 +138,55 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
 
         # reshape
         all_pcas = all_pcas.reshape(1000, -1)
+        
+    elif import_type == "transformed":
+        try:
+            with open(f"{layer}_pca.pkl", 'rb') as file:
+                all_pcas = pickle.load(file)
+                if isinstance(all_pcas, dict):
+                    all_pcas = np.array(list(all_pcas.values()))
+        except:
+            all_pcas = np.load(f"{layer}_pca.npy")
+
+        # reshape
+        all_pcas = all_pcas.reshape(1000, -1)
+
+        # import transformed test data
+        folder_path = os.path.join("PCA_filter_transformed_0.95", transformation, layer, f"{layer}_pca.pkl")
+        with open(folder_path, 'rb') as file:
+            transformed_pcas = pickle.load(file)
+        # merge transformed test data into pca array
+        # Validate the shapes to ensure the transformed_pcas can replace the last 100 rows
+        if transformed_pcas.shape[1] == all_pcas.shape[1]:
+            # Replace the last 100 rows of all_pcas with transformed_pcas
+            all_pcas[-100:] = transformed_pcas
+        else:
+            raise ValueError("Shape mismatch: transformed_pcas cannot replace the last 100 rows of all_pcas due to different column sizes.")
+    
+    elif import_type == "max_pooled":
+        try:
+            with open(f"{layer}_max_pooled_feature_maps.pkl", 'rb') as file:
+                all_pcas = pickle.load(file)
+                if isinstance(all_pcas, dict):
+                    all_pcas = np.array(list(all_pcas.values()))
+        except:
+            all_pcas = np.load(f"{layer}_max_pooled_feature_maps.npy")
+
+        # reshape
+        all_pcas = all_pcas.reshape(1000, -1)
+    
+    elif import_type == "avg_pooled":
+        try:
+            with open(f"{layer}_avg_pooled_feature_maps.pkl", 'rb') as file:
+                all_pcas = pickle.load(file)
+                if isinstance(all_pcas, dict):
+                    all_pcas = np.array(list(all_pcas.values()))
+        except:
+            all_pcas = np.load(f"{layer}_avg_pooled_feature_maps.npy")
+
+        # reshape
+        all_pcas = all_pcas.reshape(1000, -1)
+    
     else:
         # numpy arrays of the PCA results
         all_pcas = []
@@ -169,6 +218,13 @@ def get_pca(layer, mode="val", import_type="direct", motion=True):
     base_train = all_pcas[:800, :]
     base_val = all_pcas[800:900, :]
     base_test = all_pcas[900:, :]
+
+    print_statements = f"""
+    print("Shape of base_train: {base_train.shape}")
+    print("Shape of base_val: {base_val.shape}")
+    print("Shape of base_test: {base_test.shape}")
+    """
+    print(print_statements)
 
     if mode == "val":
         print("base_train shape: ", base_train.shape)
